@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xmm.akp.dao.VideoMapper">
+
+    <select id="getVideoById" parameterType="Integer" resultType="com.xmm.akp.entity.Video">
+       select * from t_video where vid=#{id}
+   </select>
+
+    <select id="findAll" resultType="com.xmm.akp.entity.Video">
+       select * from t_video;
+   </select>
+
+    <select id="search" resultType="com.xmm.akp.entity.Video">
+       select * from t_video where vsearch like  "%"#{keyWord}"%"
+   </select>
+
+</mapper>

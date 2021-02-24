@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.xmm.akp.dao.PictureMapper">
+
+     <!--根据ID修改表中数据-->
+    <update id="updateByID" parameterType="com.xmm.akp.entity.Picture">
+        update t_picture set ptitle=#{ptitle},psize=#{psize},ptype=#{ptype},psearch=#{psearch},purl=#{purl},pyear=#{pyear},plength=#{plength},author=#{author} where pid=#{pid}
+    </update>
+
+    <!-- 根据ID删除表数据 -->
+    <delete id="deleteById" parameterType="Integer">
+        delete from t_picture where pid=#{pid}
+    </delete>
+    <!--添加图片-->
+    <insert id="addPicture" parameterType="com.xmm.akp.entity.Picture">
+        insert into t_picture
+        (ptitle,psearch,purl,pyear,plength,psize,ptype,author) value
+        (#{ptitle},#{psearch},#{purl},#{pyear},#{plength},#{psize},#{ptype},#{author})
+    </insert>
+
+    <!--获取所有图片-->
+    <select id="getAll" resultType="com.xmm.akp.entity.Picture">
+        select * from t_picture
+    </select>
+
+    <!--根据pid获取图片-->
+    <select id="getPictureById" resultType="com.xmm.akp.entity.Picture" parameterType="int">
+        select * from t_picture where pid=#{pid}
+    </select>
+
+    <!--删除所有图片-->
+    <delete id="deleteAll" >
+         truncate table t_picture
+    </delete>
+    <!--获取表中记录个数（图片数量）-->
+    <select id="pictureCount"  resultType="java.lang.Integer">
+        SELECT count(*) FROM t_picture
+        account
+    </select>
+
+    <!--根据指定图片类型获取图片-->
+    <select id="getPictureByType" resultType="com.xmm.akp.entity.Picture" parameterType="String">
+       select * from t_picture where ptype like  "%"#{ptype}"%"
+   </select>
+
+    <!--根据指定图片类型获取该类型图片数量-->
+    <select id="getCountByType"  resultType="java.lang.Integer" parameterType="String">
+         SELECT count(*) FROM t_picture WHERE ptype like  "%"#{ptype}"%"
+    </select>
+
+
+</mapper>
