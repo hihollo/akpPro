@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+       PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+       "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+   
+   
+   <!-- 为实体类起别名（不然在mapper文件中返回值要写完整类名） -->
+   <typeAliases>
+       <package name="com.xmm.akp.pojo"/>
+   </typeAliases>
+   <mappers>
+       <mapper resource="com/xmm/akp/dao/PictureMapper.xml"/>
+   </mappers>
+
+
+</configuration>
